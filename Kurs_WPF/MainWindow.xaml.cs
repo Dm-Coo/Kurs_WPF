@@ -112,5 +112,12 @@ namespace Kurs_WPF
         {
             Execute();
         }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            AboutCryptingMethod aboutCryptingMethod = new AboutCryptingMethod();
+            aboutCryptingMethod.Owner = this;
+            aboutCryptingMethod.ShowDialog();
+        }
     }
 }

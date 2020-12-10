@@ -31,7 +31,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Помощь">
-                <MenuItem Header="О методе шифрования">
+                <MenuItem Header="О методе шифрования" Click="MenuItem_Click_1">
                     <MenuItem.Icon>
                         <Image Source="Pictures/file_doc.png"/>
                     </MenuItem.Icon>

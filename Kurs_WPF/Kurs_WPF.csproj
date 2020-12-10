@@ -73,9 +73,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AboutCryptingMethod.xaml.cs">
+      <DependentUpon>AboutCryptingMethod.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OpenText.cs" />
     <Compile Include="SaveText.cs" />
     <Compile Include="TextCryptor.cs" />
+    <Page Include="AboutCryptingMethod.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -163,6 +170,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pictures\prime-time-for-social-security-benefits2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pictures\220px-Vigenere.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="220px-Vigenere.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
