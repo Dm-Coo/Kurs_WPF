@@ -1,9 +1,11 @@
-﻿using Microsoft.Win32;
+﻿using Kurs_WPF.SimpleHelpers;
+using Microsoft.Win32;
 using NPOI.XWPF.UserModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -14,6 +16,11 @@ namespace Kurs_WPF
     {
         public delegate void TextOpener(TextBox textBoxCurrent);
         public TextOpener textOpener = TextOpening;
+
+        
+
+
+
         private static void TextOpening(TextBox textBoxCurrent)
         {
             // Открываем диалог
@@ -25,7 +32,8 @@ namespace Kurs_WPF
                 // Если расширение файла .txt читаем файл в форму
                 if (System.IO.Path.GetExtension(openFileDialog.FileName) == ".txt")
                 {
-                    textBoxCurrent.Text = File.ReadAllText(openFileDialog.FileName);
+                    // Записываем текст в форму, проверяя кодировку текста
+                    textBoxCurrent.Text = File.ReadAllText(openFileDialog.FileName, DetectingEncode.DetectingTextEncode(openFileDialog.FileName));
                 }
                 // Если расширение файла .docx читаем файл в форму
                 else if (System.IO.Path.GetExtension(openFileDialog.FileName) == ".docx")

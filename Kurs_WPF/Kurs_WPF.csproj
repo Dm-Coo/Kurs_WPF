@@ -64,6 +64,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Ude, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UDE.CSharp.1.1.0\lib\Ude.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -79,8 +82,10 @@
     <Compile Include="AboutCryptingMethod.xaml.cs">
       <DependentUpon>AboutCryptingMethod.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DetectingEncode.cs" />
     <Compile Include="OpenText.cs" />
     <Compile Include="SaveText.cs" />
+    <Compile Include="SimpleHelpers\FileEncoding.cs" />
     <Compile Include="TextCryptor.cs" />
     <Page Include="About.xaml">
       <SubType>Designer</SubType>
