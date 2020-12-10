@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kurs_WPF"
         mc:Ignorable="d"
-        Title="It's More Than Cryptor" Width="1024" Height="768" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="Pictures/katomic.png">
+        Title="It's More Than Cryptor" Width="1024" Height="768" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="Pictures/Atom.png">
     <Window.Background>
         <ImageBrush ImageSource="Pictures/prime-time-for-social-security-benefits2.jpg"/>
     </Window.Background>
@@ -36,7 +36,7 @@
                         <Image Source="Pictures/file_doc.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="О программе">
+                <MenuItem Header="О программе" Click="MenuItem_Click_2">
                     <MenuItem.Icon>
                         <Image Source="Pictures/info.png"/>
                     </MenuItem.Icon>

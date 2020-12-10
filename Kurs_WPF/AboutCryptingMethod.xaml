@@ -15,7 +15,7 @@
                 <TextBlock></TextBlock>
             </StackPanel>
         </TextBlock>
-        <Image HorizontalAlignment="Left" Height="194" Margin="631,24,-20,0" VerticalAlignment="Top" Width="184" Source="220px-Vigenere.png"/>
+        <Image HorizontalAlignment="Left" Height="194" Margin="631,24,-20,0" VerticalAlignment="Top" Width="184" Source="Pictures/220px-Vigenere.png"/>
         <Button Name="CloseButton" Content="Закрыть" Margin="330,0,330,20" Height="30" VerticalAlignment="Bottom" Click="CloseButton_Click"/>
 
     </Grid>
