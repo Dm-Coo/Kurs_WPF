@@ -15,6 +15,7 @@ namespace Kurs_WPF
             {
                 return text;
             }
+            key = key.ToLower();
             // Определяем алфавит
             string abc = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
             string textNew = "";
