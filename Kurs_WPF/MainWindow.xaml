@@ -12,7 +12,7 @@
     <Grid>
         <Menu HorizontalAlignment="Stretch" Height="20" VerticalAlignment="Top" Width="Auto">
             <MenuItem Header="Файл">
-                <MenuItem Name="Export" Header="Экспорт в файл">
+                <MenuItem Name="Export" Header="Экспорт в файл" Click="Export_Click">
                     <MenuItem.Icon>
                         <Image Source="Pictures/folder_sent_mail.png"/>
                     </MenuItem.Icon>
@@ -24,7 +24,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Инструменты">
-                <MenuItem Header="Выполнить" HorizontalAlignment="Left">
+                <MenuItem Header="Выполнить" HorizontalAlignment="Left" Click="MenuItem_Click">
                     <MenuItem.Icon>
                         <Image Source="Pictures/kded.png"/>
                     </MenuItem.Icon>
@@ -50,7 +50,7 @@
                 <Image Source="Pictures/folder_blue.png"/>
             </Button>
             <Separator />
-            <Button Name="ExportToolBarButton" Height="25" Width="25" ToolTip="Экспорт">
+            <Button Name="ExportToolBarButton" Height="25" Width="25" ToolTip="Экспорт" Click="ExportToolBarButton_Click">
                 <Image Source="Pictures/folder_sent_mail.png"/>
             </Button>
             <Separator />

@@ -60,12 +60,13 @@ namespace Kurs_WPF
             {
                 return text;
             }
+            // Определяем лист для строк
             List<char> list = new List<char>();
             // Определяем знаки, после которых буква - заглавная
             string punctuations = ".?!";
             // Разделяем текст на строки
             string[] newLineArray = text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-            // Перебираем символы в новом массиве
+            // Перебираем строки в новом массиве
             foreach (var item in newLineArray)
             {
                 bool check = true;

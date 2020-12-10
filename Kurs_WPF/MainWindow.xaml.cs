@@ -37,26 +37,12 @@ namespace Kurs_WPF
 
         private void ExecuteButton_Click(object sender, RoutedEventArgs e)
         {
-            // Если выбрана кнопка Шифровать, передаем текст из верхнего поля, ключ, указание шифровать и состояние Оставить буквы в верхнем регистре
-            if ((bool)EncryptRadioButton.IsChecked)
-            {
-                DecryptTextBox.Text = cryptography?.Invoke(EncryptTextBox.Text, KeyTextBox.Text, true, (bool)UpperInDecryptCheckBox.IsChecked);
-            }
-            else 
-            {
-                // Если выбрана кнопка Расшифровать, передаем текст из нижнего поля, ключ, указание шифровать и состояние Оставить буквы в верхнем регистре
-                // Если указано Сделать буквы как в предложении, запускаем дополнительный делегат
-                if ((bool)AsSentenceCheckBox.IsChecked)
-                {
-                    EncryptTextBox.Text = register?.Invoke(cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked));
-                }
-                else { EncryptTextBox.Text = cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked); }
-            }
+            Execute();
         }
 
         private void LoadToolBarButton_Click(object sender, RoutedEventArgs e)
         {
-            // Определяем, в какую форму вставлять в зависимости от выбранной кнопки
+            // Определяем, в какую форму вставлять в зависимости от текущего выбранной формы или выбранной кнопки
             TextBox textBoxCurrent;
             if (EncryptTextBox.IsSelectionActive || DecryptTextBox.IsSelectionActive)
             {
@@ -81,6 +67,50 @@ namespace Kurs_WPF
                 EncryptTextBox.Text = register?.Invoke(cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked));
             }
             else { EncryptTextBox.Text = cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked); }
+        }
+
+        private void ExportToolBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Exporting();
+        }
+
+        private void Export_Click(object sender, RoutedEventArgs e)
+        {
+            Exporting();
+        }
+        private void Exporting()
+        {
+            // Определяем, из какой формы экспортировать в зависимости от текущего выбранной формы или выбранной кнопки
+            TextBox textBoxCurrent;
+            if (EncryptTextBox.IsSelectionActive || DecryptTextBox.IsSelectionActive)
+            {
+                textBoxCurrent = EncryptTextBox.IsSelectionActive ? EncryptTextBox : DecryptTextBox;
+            }
+            else { textBoxCurrent = (bool)EncryptRadioButton.IsChecked ? EncryptTextBox : DecryptTextBox; }
+            new SaveText().textSaver?.Invoke(textBoxCurrent);
+        }
+        private void Execute()
+        {
+            // Если выбрана кнопка Шифровать, передаем текст из верхнего поля, ключ, указание шифровать и состояние Оставить буквы в верхнем регистре
+            if ((bool)EncryptRadioButton.IsChecked)
+            {
+                DecryptTextBox.Text = cryptography?.Invoke(EncryptTextBox.Text, KeyTextBox.Text, true, (bool)UpperInDecryptCheckBox.IsChecked);
+            }
+            else
+            {
+                // Если выбрана кнопка Расшифровать, передаем текст из нижнего поля, ключ, указание шифровать и состояние Оставить буквы в верхнем регистре
+                // Если указано Сделать буквы как в предложении, запускаем дополнительный делегат
+                if ((bool)AsSentenceCheckBox.IsChecked)
+                {
+                    EncryptTextBox.Text = register?.Invoke(cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked));
+                }
+                else { EncryptTextBox.Text = cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked); }
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Execute();
         }
     }
 }

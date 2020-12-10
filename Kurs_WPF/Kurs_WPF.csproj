@@ -74,6 +74,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="OpenText.cs" />
+    <Compile Include="SaveText.cs" />
     <Compile Include="TextCryptor.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
