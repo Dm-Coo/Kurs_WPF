@@ -10,7 +10,7 @@ namespace Kurs_WPFUnitTest
     public class TestLoadingFromFile
     {
         [TestMethod]
-        public void Loading_FromTxt_UTF8()
+        public void Loading_From_Txt_UTF8()
         {
             string path = "../../../Test Texts/TextWithUTF8.txt";
             string expected = "Привет, я\r\nвсего лишь текстовый документ\r\nИ я для теста!!!!!!!!!!";
@@ -19,11 +19,21 @@ namespace Kurs_WPFUnitTest
             Assert.AreEqual(expected, actual, "Результат неверный!");
         }
         [TestMethod]
-        public void Loading_FromTxt_ANSI()
+        public void Loading_From_Txt_ANSI()
         {
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             string path = "../../../Test Texts/TextWithANSI.txt";
             string expected = "Это обычный текст или не обычный";
+            string actual = new OpenText().textOpener?.Invoke(path);
+
+            Assert.AreEqual(expected, actual, "Результат неверный!");
+        }
+        [TestMethod]
+        public void Loading_From_Word()
+        {
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            string path = "../../../Test Texts/TestWord.docx";
+            string expected = "Привет, я\r\nвсего лишь текстовый документ\r\nИ я для теста!!!!!!!!!!";
             string actual = new OpenText().textOpener?.Invoke(path);
 
             Assert.AreEqual(expected, actual, "Результат неверный!");
