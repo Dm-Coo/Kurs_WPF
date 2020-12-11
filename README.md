@@ -27,7 +27,7 @@
 ![](https://github.com/Mur-mur/Kurs_WPF/blob/master/Description%20Pictures/Change.png)
 
 В текстовые поля пользователь может вводить текст с клавиатуры, а так же вставлять его с помощью кнопки "Открыть".
-Текст будет вставлен в текущее выбранное поле, а в случае невозможности, соответственно выбранному переключателю Зашифровать/Расшифровать
+Текст будет вставлен в текущее выбранное поле, а в случае невозможности, соответственно выбранному переключателю Зашифровать/Расшифровать  
 ![](https://github.com/Mur-mur/Kurs_WPF/blob/master/Description%20Pictures/Open.png)
 
 Для экспорта текста из поля в файл необходимо нажать кнопку "Экспорт" на панели инструментов  
@@ -36,7 +36,9 @@
 Пользователю доступны две опции:  
 - Оставить буквы заглавными. При её активации в после выполнения операции регистр будет оставаться таким как в оригинале ( по умолчанию регистр всегда нижний)  
 - В расшифрованном тексте регистр букв будет по правилам заглавных букв в тексте.  
+
 ![](https://github.com/Mur-mur/Kurs_WPF/blob/master/Description%20Pictures/Register.png)
 
 Для запуска шифрования/дешифрования можно нажать кнопку "Выполнить", что осуществит выбранную операцию, а так же воспользоваться кнопками Шифровать/Дешифровать на панели инструментов  
-![](https://github.com/Mur-mur/Kurs_WPF/blob/master/Description%20Pictures/Execute.png) ![](https://github.com/Mur-mur/Kurs_WPF/blob/master/Description%20Pictures/Encrypt-Decrypt.png) 
+![](https://github.com/Mur-mur/Kurs_WPF/blob/master/Description%20Pictures/Execute.png)  
+![](https://github.com/Mur-mur/Kurs_WPF/blob/master/Description%20Pictures/Encrypt-Decrypt.png)  
