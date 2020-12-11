@@ -42,14 +42,17 @@ namespace Kurs_WPF
 
         private void LoadToolBarButton_Click(object sender, RoutedEventArgs e)
         {
-            // Определяем, в какую форму вставлять в зависимости от текущего выбранной формы или выбранной кнопки
-            TextBox textBoxCurrent;
-            if (EncryptTextBox.IsSelectionActive || DecryptTextBox.IsSelectionActive)
+            // Определяем в какой TextBox вставлять
+            TextBox textBoxCurrent = TextBoxDefining();
+            // Открываем диалог
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            // Указываем доступные типы файлов
+            openFileDialog.Filter = "Текстовые файлы (*.txt;*.docx)|*.txt;*.docx|Текстовый файл (*.txt)|*.txt|Документ Word (*.docx)|*.docx";
+            if (openFileDialog.ShowDialog() == true)
             {
-                textBoxCurrent = EncryptTextBox.IsSelectionActive ? EncryptTextBox : DecryptTextBox;
+                textBoxCurrent.Text = new OpenText().textOpener?.Invoke(openFileDialog.FileName);
             }
-            else { textBoxCurrent = (bool)EncryptRadioButton.IsChecked ? EncryptTextBox : DecryptTextBox; }
-            new OpenText().textOpener?.Invoke(textBoxCurrent);
+                
         }
 
         private void EncryptToolBarButton_Click(object sender, RoutedEventArgs e)
@@ -80,13 +83,9 @@ namespace Kurs_WPF
         }
         private void Exporting()
         {
+            // Определяем в какой TextBox вставлять
+            TextBox textBoxCurrent = TextBoxDefining();
             // Определяем, из какой формы экспортировать в зависимости от текущего выбранной формы или выбранной кнопки
-            TextBox textBoxCurrent;
-            if (EncryptTextBox.IsSelectionActive || DecryptTextBox.IsSelectionActive)
-            {
-                textBoxCurrent = EncryptTextBox.IsSelectionActive ? EncryptTextBox : DecryptTextBox;
-            }
-            else { textBoxCurrent = (bool)EncryptRadioButton.IsChecked ? EncryptTextBox : DecryptTextBox; }
             new SaveText().textSaver?.Invoke(textBoxCurrent);
         }
         private void Execute()
@@ -126,5 +125,15 @@ namespace Kurs_WPF
             about.Owner = this;
             about.ShowDialog();
         }
+        private TextBox TextBoxDefining()
+        {
+            // Определяем, в какую форму вставлять в зависимости от текущего выбранной формы или выбранной кнопки
+            if (EncryptTextBox.IsSelectionActive || DecryptTextBox.IsSelectionActive)
+            {
+                return EncryptTextBox.IsSelectionActive ? EncryptTextBox : DecryptTextBox;
+            }
+            else { return (bool)EncryptRadioButton.IsChecked ? EncryptTextBox : DecryptTextBox; }
+        }
+
     }
 }

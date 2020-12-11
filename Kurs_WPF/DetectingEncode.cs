@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,10 +16,13 @@ namespace Kurs_WPF
         {
             using (var stream = new FileStream(path, FileMode.Open))
             {
-                var reader = new StreamReader(stream, Encoding.Default, true);
+                // Получаем кодировку ANSI
+                Encoding encoding = CodePagesEncodingProvider.Instance.GetEncoding("windows-1251");
+                // Проверяем совпадает ли кодировка текста с ANSI
+                var reader = new StreamReader(stream, encoding, true);
                 reader.ReadToEnd();
 
-                if (reader.CurrentEncoding != Encoding.Default)
+                if (reader.CurrentEncoding != encoding)
                 {
                     reader.Dispose();
                     reader.Close();
@@ -39,7 +43,7 @@ namespace Kurs_WPF
                 {
                     reader.Dispose();
                     reader.Close();
-                    return Encoding.Default;
+                    return encoding;
                 }
             }
         }
