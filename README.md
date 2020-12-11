@@ -14,3 +14,5 @@
 - Перевод расшифрованного текста в формат регистра "Как в предложении."
 
 # Описание интерфейса
+Главная страница приложения
+![Image alt](https://github.com/Mur-mur/Kurs_WPF/blob/master/Description%20Pictures/MainWindow.png)
