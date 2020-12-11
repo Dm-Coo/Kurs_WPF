@@ -17,10 +17,6 @@ namespace Kurs_WPF
         public delegate void TextOpener(TextBox textBoxCurrent);
         public TextOpener textOpener = TextOpening;
 
-        
-
-
-
         private static void TextOpening(TextBox textBoxCurrent)
         {
             // Открываем диалог
