@@ -42,17 +42,7 @@ namespace Kurs_WPF
 
         private void LoadToolBarButton_Click(object sender, RoutedEventArgs e)
         {
-            // Определяем в какой TextBox вставлять
-            TextBox textBoxCurrent = TextBoxDefining();
-            // Открываем диалог
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            // Указываем доступные типы файлов
-            openFileDialog.Filter = "Текстовые файлы (*.txt;*.docx)|*.txt;*.docx|Текстовый файл (*.txt)|*.txt|Документ Word (*.docx)|*.docx";
-            if (openFileDialog.ShowDialog() == true)
-            {
-                textBoxCurrent.Text = new OpenText().textOpener?.Invoke(openFileDialog.FileName);
-            }
-                
+            Open();
         }
 
         private void EncryptToolBarButton_Click(object sender, RoutedEventArgs e)
@@ -145,5 +135,22 @@ namespace Kurs_WPF
             else { return (bool)EncryptRadioButton.IsChecked ? EncryptTextBox : DecryptTextBox; }
         }
 
+        private void OpenFile_Click(object sender, RoutedEventArgs e)
+        {
+            Open();
+        }
+        private void Open()
+        {
+            // Определяем в какой TextBox вставлять
+            TextBox textBoxCurrent = TextBoxDefining();
+            // Открываем диалог
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            // Указываем доступные типы файлов
+            openFileDialog.Filter = "Текстовые файлы (*.txt;*.docx)|*.txt;*.docx|Текстовый файл (*.txt)|*.txt|Документ Word (*.docx)|*.docx";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                textBoxCurrent.Text = new OpenText().textOpener?.Invoke(openFileDialog.FileName);
+            }
+        }
     }
 }

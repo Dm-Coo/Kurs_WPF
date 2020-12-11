@@ -12,6 +12,11 @@
     <Grid>
         <Menu HorizontalAlignment="Stretch" Height="20" VerticalAlignment="Top" Width="Auto">
             <MenuItem Header="Файл">
+                <MenuItem Name="OpenFile" Header="Открыть" Click="OpenFile_Click">
+                    <MenuItem.Icon>
+                        <Image Source="Pictures/folder_blue.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <MenuItem Name="Export" Header="Экспорт в файл" Click="Export_Click">
                     <MenuItem.Icon>
                         <Image Source="Pictures/folder_sent_mail.png"/>
