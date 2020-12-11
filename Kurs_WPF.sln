@@ -7,11 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kurs_WPF", "Kurs_WPF\Kurs_W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kurs_WPFUnitTest", "Kurs_WPFUnitTest\Kurs_WPFUnitTest.csproj", "{39C77214-3FEA-438D-827C-DF65969DEE9C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Description Pictures", "Description Pictures", "{76650389-17CA-4FED-A40A-DFE7A4D988CD}"
-	ProjectSection(SolutionItems) = preProject
-		Kurs_WPF\Images\endturn.png = Kurs_WPF\Images\endturn.png
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
