@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kurs_WPF
 {
-    class TextCryptor
+    public class TextCryptor
     {
         public static string Crypting(string text, string key, bool operation, bool register)
         {
