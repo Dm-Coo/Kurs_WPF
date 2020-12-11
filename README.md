@@ -16,4 +16,7 @@
 # Описание интерфейса
 Главная страница приложения
 
-![alt text](https://github.com/Mur-mur/Kurs_WPF/blob/master/Description%20Pictures/MainWindow.png)
+![](https://github.com/Mur-mur/Kurs_WPF/blob/master/Description%20Pictures/MainWindow.png)
+
+По умолчанию выбрание шифрование текста, для переключения на расшифровку необходимо нажать соответствующую кнопку
+![](https://github.com/Mur-mur/Kurs_WPF/blob/master/Description%20Pictures/Change.png)
