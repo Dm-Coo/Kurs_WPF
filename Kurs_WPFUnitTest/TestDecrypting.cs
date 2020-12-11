@@ -6,7 +6,7 @@ namespace Kurs_WPFUnitTest
     [TestClass]
     public class TestDecrypting
     {
-        bool operation = false;
+        readonly bool operation = false;
         [TestMethod]
         public void Decrypting_TextSimple_Default()
         {

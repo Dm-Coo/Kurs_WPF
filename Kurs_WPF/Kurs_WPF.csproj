@@ -142,22 +142,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pictures\folder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pictures\share.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Pictures\folder_blue.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pictures\folder_sent_mail.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pictures\unlock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pictures\lock.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pictures\encrypted.png" />
@@ -181,19 +169,10 @@
     <Resource Include="Pictures\katomic.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pictures\prime-time-for-social-security-benefits.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pictures\D-KX67sW4AMwba2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Pictures\prime-time-for-social-security-benefits2.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pictures\220px-Vigenere.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pictures\20150413155715-5969.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pictures\2569313.jpg" />

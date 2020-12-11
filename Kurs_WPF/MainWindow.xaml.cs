@@ -23,8 +23,8 @@ namespace Kurs_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        Func<string, string, bool, bool, string> cryptography = TextCryptor.Crypting;
-        Func<string, string> register = TextCryptor.ToSentenceRegister;
+        readonly Func<string, string, bool, bool, string> cryptography = TextCryptor.Crypting;
+        readonly Func<string, string> register = TextCryptor.ToSentenceRegister;
         public MainWindow()
         {
             InitializeComponent();
