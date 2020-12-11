@@ -83,10 +83,20 @@ namespace Kurs_WPF
         }
         private void Exporting()
         {
-            // Определяем в какой TextBox вставлять
+            // Определяем из какого TextBox вставлять
             TextBox textBoxCurrent = TextBoxDefining();
-            // Определяем, из какой формы экспортировать в зависимости от текущего выбранной формы или выбранной кнопки
-            new SaveText().textSaver?.Invoke(textBoxCurrent);
+
+            // Открываем диалог
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            // Указываем доступные типы файлов
+            saveFileDialog.Filter = "Текстовые файлы (*.txt;*.docx)|*.txt;*.docx|Текстовый файл (*.txt)|*.txt|Документ Word (*.docx)|*.docx";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string path = saveFileDialog.FileName;
+                // Определяем, из какой формы экспортировать в зависимости от текущего выбранной формы или выбранной кнопки
+                new SaveText().textSaver?.Invoke(textBoxCurrent.Text, path);
+            }
+                
         }
         private void Execute()
         {
