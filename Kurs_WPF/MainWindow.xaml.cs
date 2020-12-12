@@ -52,9 +52,9 @@ namespace Kurs_WPF
                 // Передаем текст из верхнего поля, ключ, указание шифровать и состояние Оставить буквы в верхнем регистре
                 DecryptTextBox.Text = cryptography?.Invoke(EncryptTextBox.Text, KeyTextBox.Text, true, (bool)UpperInDecryptCheckBox.IsChecked);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Не удалось выполнить шифрование", "Ошибка", MessageBoxButton.OK);
+                MessageBox.Show("Не удалось выполнить шифрование\r\n" + ex.Message, "Ошибка", MessageBoxButton.OK);
             }
         }
 
@@ -70,9 +70,9 @@ namespace Kurs_WPF
                 }
                 else { EncryptTextBox.Text = cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked); }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Не удалось выполнить расшифровку", "Ошибка", MessageBoxButton.OK);
+                MessageBox.Show("Не удалось выполнить расшифровку\r\n" + ex.Message, "Ошибка", MessageBoxButton.OK);
             }
         }
 
@@ -103,9 +103,9 @@ namespace Kurs_WPF
                     new SaveText().textSaver?.Invoke(textBoxCurrent.Text, path);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Не удалось экспортировать файл", "Ошибка", MessageBoxButton.OK);
+                MessageBox.Show("Не удалось экспортировать файл\r\n" + ex.Message, "Ошибка", MessageBoxButton.OK);
             }
 
         }
@@ -129,9 +129,9 @@ namespace Kurs_WPF
                     else { EncryptTextBox.Text = cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked); }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Не удалось выполнить действие", "Ошибка", MessageBoxButton.OK);
+                MessageBox.Show("Не удалось выполнить действие\r\n" + ex.Message, "Ошибка", MessageBoxButton.OK);
             }
         }
 
@@ -183,9 +183,9 @@ namespace Kurs_WPF
                     textBoxCurrent.Text = new OpenText().textOpener?.Invoke(openFileDialog.FileName);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Не удалось открыть файл", "Ошибка", MessageBoxButton.OK);
+                MessageBox.Show("Не удалось открыть файл\r\n" + ex.Message, "Ошибка", MessageBoxButton.OK);
             }
         }
     }
