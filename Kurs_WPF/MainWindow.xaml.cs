@@ -47,19 +47,33 @@ namespace Kurs_WPF
 
         private void EncryptToolBarButton_Click(object sender, RoutedEventArgs e)
         {
-            // Передаем текст из верхнего поля, ключ, указание шифровать и состояние Оставить буквы в верхнем регистре
-            DecryptTextBox.Text = cryptography?.Invoke(EncryptTextBox.Text, KeyTextBox.Text, true, (bool)UpperInDecryptCheckBox.IsChecked);
+            try
+            {
+                // Передаем текст из верхнего поля, ключ, указание шифровать и состояние Оставить буквы в верхнем регистре
+                DecryptTextBox.Text = cryptography?.Invoke(EncryptTextBox.Text, KeyTextBox.Text, true, (bool)UpperInDecryptCheckBox.IsChecked);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось выполнить шифрование", "Ошибка", MessageBoxButton.OK);
+            }
         }
 
         private void DecryptToolBarButton_Click(object sender, RoutedEventArgs e)
         {
-            // Передаем текст из нижнего поля, ключ, указание шифровать и состояние Оставить буквы в верхнем регистре
-            // Если указано Сделать буквы как в предложении, запускаем дополнительный делегат
-            if ((bool)AsSentenceCheckBox.IsChecked)
+            try
             {
-                EncryptTextBox.Text = register?.Invoke(cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked));
+                // Передаем текст из нижнего поля, ключ, указание шифровать и состояние Оставить буквы в верхнем регистре
+                // Если указано Сделать буквы как в предложении, запускаем дополнительный делегат
+                if ((bool)AsSentenceCheckBox.IsChecked)
+                {
+                    EncryptTextBox.Text = register?.Invoke(cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked));
+                }
+                else { EncryptTextBox.Text = cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked); }
             }
-            else { EncryptTextBox.Text = cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked); }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось выполнить расшифровку", "Ошибка", MessageBoxButton.OK);
+            }
         }
 
         private void ExportToolBarButton_Click(object sender, RoutedEventArgs e)
@@ -73,37 +87,51 @@ namespace Kurs_WPF
         }
         private void Exporting()
         {
-            // Определяем из какого TextBox вставлять
-            TextBox textBoxCurrent = TextBoxDefining();
-
-            // Открываем диалог
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            // Указываем доступные типы файлов
-            saveFileDialog.Filter = "Текстовые файлы (*.txt;*.docx)|*.txt;*.docx|Текстовый файл (*.txt)|*.txt|Документ Word (*.docx)|*.docx";
-            if (saveFileDialog.ShowDialog() == true)
+            try
             {
-                string path = saveFileDialog.FileName;
-                // Определяем, из какой формы экспортировать в зависимости от текущего выбранной формы или выбранной кнопки
-                new SaveText().textSaver?.Invoke(textBoxCurrent.Text, path);
+                // Определяем из какого TextBox вставлять
+                TextBox textBoxCurrent = TextBoxDefining();
+
+                // Открываем диалог
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                // Указываем доступные типы файлов
+                saveFileDialog.Filter = "Текстовые файлы (*.txt;*.docx)|*.txt;*.docx|Текстовый файл (*.txt)|*.txt|Документ Word (*.docx)|*.docx";
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    string path = saveFileDialog.FileName;
+                    // Определяем, из какой формы экспортировать в зависимости от текущего выбранной формы или выбранной кнопки
+                    new SaveText().textSaver?.Invoke(textBoxCurrent.Text, path);
+                }
             }
-                
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось экспортировать файл", "Ошибка", MessageBoxButton.OK);
+            }
+
         }
         private void Execute()
         {
-            // Если выбрана кнопка Шифровать, передаем текст из верхнего поля, ключ, указание шифровать и состояние Оставить буквы в верхнем регистре
-            if ((bool)EncryptRadioButton.IsChecked)
+            try
             {
-                DecryptTextBox.Text = cryptography?.Invoke(EncryptTextBox.Text, KeyTextBox.Text, true, (bool)UpperInDecryptCheckBox.IsChecked);
-            }
-            else
-            {
-                // Если выбрана кнопка Расшифровать, передаем текст из нижнего поля, ключ, указание шифровать и состояние Оставить буквы в верхнем регистре
-                // Если указано Сделать буквы как в предложении, запускаем дополнительный делегат
-                if ((bool)AsSentenceCheckBox.IsChecked)
+                // Если выбрана кнопка Шифровать, передаем текст из верхнего поля, ключ, указание шифровать и состояние Оставить буквы в верхнем регистре
+                if ((bool)EncryptRadioButton.IsChecked)
                 {
-                    EncryptTextBox.Text = register?.Invoke(cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked));
+                    DecryptTextBox.Text = cryptography?.Invoke(EncryptTextBox.Text, KeyTextBox.Text, true, (bool)UpperInDecryptCheckBox.IsChecked);
                 }
-                else { EncryptTextBox.Text = cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked); }
+                else
+                {
+                    // Если выбрана кнопка Расшифровать, передаем текст из нижнего поля, ключ, указание шифровать и состояние Оставить буквы в верхнем регистре
+                    // Если указано Сделать буквы как в предложении, запускаем дополнительный делегат
+                    if ((bool)AsSentenceCheckBox.IsChecked)
+                    {
+                        EncryptTextBox.Text = register?.Invoke(cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked));
+                    }
+                    else { EncryptTextBox.Text = cryptography?.Invoke(DecryptTextBox.Text, KeyTextBox.Text, false, (bool)UpperInDecryptCheckBox.IsChecked); }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось выполнить действие", "Ошибка", MessageBoxButton.OK);
             }
         }
 
@@ -141,15 +169,23 @@ namespace Kurs_WPF
         }
         private void Open()
         {
-            // Определяем в какой TextBox вставлять
-            TextBox textBoxCurrent = TextBoxDefining();
-            // Открываем диалог
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            // Указываем доступные типы файлов
-            openFileDialog.Filter = "Текстовые файлы (*.txt;*.docx)|*.txt;*.docx|Текстовый файл (*.txt)|*.txt|Документ Word (*.docx)|*.docx";
-            if (openFileDialog.ShowDialog() == true)
+            try
             {
-                textBoxCurrent.Text = new OpenText().textOpener?.Invoke(openFileDialog.FileName);
+
+                // Определяем в какой TextBox вставлять
+                TextBox textBoxCurrent = TextBoxDefining();
+                // Открываем диалог
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                // Указываем доступные типы файлов
+                openFileDialog.Filter = "Текстовые файлы (*.txt;*.docx)|*.txt;*.docx|Текстовый файл (*.txt)|*.txt|Документ Word (*.docx)|*.docx";
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    textBoxCurrent.Text = new OpenText().textOpener?.Invoke(openFileDialog.FileName);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось открыть файл", "Ошибка", MessageBoxButton.OK);
             }
         }
     }
